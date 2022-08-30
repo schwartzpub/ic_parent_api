@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ic_parent_api"
+version = "0.0.1"
+authors = [
+    {name = "Jacob Schwartz",email = "jake@schwartzpub.com"},
+]
+description = "A small async API wrapper for Infinite Campus Parents."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "aiohttp",
+    "pydantic>=1.8.2,<1.10.0"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/schwartzpub/ic_parent_api"
+"Bug Tracker" = "https://github.com/schwartzpub/ic_parent_api/issues"
