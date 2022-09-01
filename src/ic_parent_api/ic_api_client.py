@@ -83,7 +83,6 @@ class InfiniteCampusApiClient():
     async def get_courses(self, student_id: int) -> list[CourseResponse]:
         """Get Infinite Campus Courses."""
         parsed_response = await self._get_request(f"/campus/resources/portal/roster?&personID={student_id}")
-        #parsed_json = json.loads(json.dumps(parsed_response))
         if parsed_response:
             return [CourseResponse(**resp) for resp in parsed_response]
         return []

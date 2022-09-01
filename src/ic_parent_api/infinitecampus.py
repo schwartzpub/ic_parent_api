@@ -35,7 +35,6 @@ class InfiniteCampus():
     async def courses(self,student_id) -> list[Course]:
         """Get Courses: must supply student id."""
         coursesresp = await self._api_client.get_courses(student_id)
-        print(coursesresp)
         courses = [Course(response) for response in coursesresp]
         return courses
 
