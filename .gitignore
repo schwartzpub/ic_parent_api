@@ -1,3 +1,9 @@
 venv/
 tests/
 dist/
+src/ic_parent_api.egg-info/
+ic_parent_api.code-workspace
+.vscode/
+src/ic_parent_api/__pycache__/
+src/ic_parent_api/errors/__pycache__/
+src/ic_parent_api/models/__pycache__/
