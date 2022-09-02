@@ -1,6 +1,8 @@
 """Course Model Definition."""
 from ic_parent_api.base import DataModel
+from ic_parent_api.models.placement import Placement
 from ic_parent_api.ic_api_client import CourseResponse
+
 
 class Course(DataModel):
     """Course Model Definition."""
@@ -50,7 +52,7 @@ class Course(DataModel):
     def calendarid(self) -> int:
         """Property Definition."""
         return self._calendarid
-    
+
     @property
     def schoolid(self) -> int:
         """Property Definition."""
@@ -112,6 +114,6 @@ class Course(DataModel):
         return self._hidestandardsonportal
 
     @property
-    def sectionplacements(self) -> list[dict]:
+    def sectionplacements(self) -> list[Placement]:
         """Property Definition."""
-        return self._sectionplacements
+        return [Placement(placement) for placement in self._sectionplacements]

@@ -2,6 +2,7 @@
 from ic_parent_api.base import DataModel
 from ic_parent_api.ic_api_client import AssignmentResponse
 
+
 class Assignment(DataModel):
     """Assignment Model Definition."""
     def __init__(self, assignment_resp: AssignmentResponse):
@@ -252,7 +253,7 @@ class Assignment(DataModel):
     def hasexternalfile(self) -> bool:
         """Property Definition."""
         return self._hasexternalfile
-    
+
     @property
     def hassubmission(self) -> bool:
         """Property Definition."""

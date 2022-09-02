@@ -1,7 +1,9 @@
 """Student Model Definition."""
 from ic_parent_api.base import DataModel
 from ic_parent_api.models.scheduleday import ScheduleDay
+from ic_parent_api.models.enrollment import Enrollment
 from ic_parent_api.ic_api_client import StudentResponse
+
 
 class Student(DataModel):
     """Student Model Definition."""
@@ -65,16 +67,16 @@ class Student(DataModel):
         return self._hasportalenrollment
 
     @property
-    def enrollments(self) -> list[dict]:
+    def enrollments(self) -> list[Enrollment]:
         """Property Definition."""
-        return self._enrollments
+        return [Enrollment(enrollment) for enrollment in self._enrollments]
 
     @property
-    def futureenrollments(self) -> list[dict]:
+    def futureenrollments(self) -> list[Enrollment]:
         """Property Definition."""
-        return self._futureenrollments
+        return [Enrollment(enrollment) for enrollment in self._futureenrollments]
 
     @property
-    def scheduledays(self) -> list[dict]:
+    def scheduledays(self) -> list[ScheduleDay]:
         """Property Definition."""
-        return self._scheduledays
+        return [ScheduleDay(scheduleday) for scheduleday in self._scheduledays]

@@ -4,12 +4,14 @@ Borrowed from pygrocy (https://github.com/SebRut/pygrocy)
 """
 import json
 
+
 def get_val(obj):
     """Get Value."""
     if hasattr(obj, "as_dict"):
         as_attr = getattr(obj, "as_dict")
         return as_attr()
     return obj
+
 
 class DataModel():
     """Define DataModel."""

@@ -2,6 +2,7 @@
 from ic_parent_api.base import DataModel
 from ic_parent_api.ic_api_client import TermResponse
 
+
 class Term(DataModel):
     """Term Model Definition."""
     def __init__(self, term_resp: TermResponse):

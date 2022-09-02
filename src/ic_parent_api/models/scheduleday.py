@@ -2,6 +2,7 @@
 from ic_parent_api.base import DataModel
 from ic_parent_api.ic_api_client import ScheduleDayResponse
 
+
 class ScheduleDay(DataModel):
     """ScheduleDay Model Definition."""
     def __init__(self, scheduleday_resp: ScheduleDayResponse):
@@ -15,7 +16,6 @@ class ScheduleDay(DataModel):
         self._isschoolday = scheduleday_resp.isSchoolDay
         self._duration = scheduleday_resp.duration
         self._trialid = scheduleday_resp.trialID
-
 
     @property
     def id(self) -> str:
