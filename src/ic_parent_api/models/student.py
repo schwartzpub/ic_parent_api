@@ -3,6 +3,7 @@ from ic_parent_api.base import DataModel
 from ic_parent_api.models.scheduleday import ScheduleDay
 from ic_parent_api.models.enrollment import Enrollment
 from ic_parent_api.ic_api_client import StudentResponse
+from typing import Optional
 
 
 class Student(DataModel):
@@ -47,12 +48,12 @@ class Student(DataModel):
         return self._middlename
 
     @property
-    def suffix(self) -> str:
+    def suffix(self) -> Optional[str]:
         """Property Definition."""
         return self._suffix
 
     @property
-    def alias(self) -> str:
+    def alias(self) -> Optional[str]:
         """Property Definition."""
         return self._alias
 
@@ -77,6 +78,6 @@ class Student(DataModel):
         return [Enrollment(enrollment) for enrollment in self._futureenrollments]
 
     @property
-    def scheduledays(self) -> list[ScheduleDay]:
+    def scheduledays(self) -> Optional[list[ScheduleDay]]:
         """Property Definition."""
         return [ScheduleDay(scheduleday) for scheduleday in self._scheduledays]

@@ -44,11 +44,11 @@ class InfiniteCampusApiClient():
         """Test if we can authenticate with the district."""
         try:
             request_url = urljoin(
-                self._base_url, f"""/campus/verify.jsp?nonBrowser=true
-                &username={self._username}
-                &password={self._secret}
-                &appName={self._district}
-                &portalLoginPage=parents"""
+                self._base_url, (f"/campus/verify.jsp?nonBrowser=true"
+                                 f"&username={self._username}"
+                                 f"&password={self._secret}"
+                                 f"&appName={self._district}"
+                                 "&portalLoginPage=parents")
             )
             async with session.post(request_url) as authresponse:
                 response = authresponse

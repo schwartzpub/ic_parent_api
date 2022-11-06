@@ -1,7 +1,8 @@
 """Placement Model Definition."""
 from ic_parent_api.base import DataModel
-from ic_parent_api.ic_api_client import PlacementResponse
+from ic_parent_api.models.base import PlacementResponse
 from ic_parent_api.models.term import Term
+from typing import Optional
 
 
 class Placement(DataModel):
@@ -88,12 +89,12 @@ class Placement(DataModel):
         return self._periodscheduleid
 
     @property
-    def starttime(self) -> str:
+    def starttime(self) -> Optional[str]:
         """Property Definition."""
         return self._starttime
 
     @property
-    def endtime(self) -> str:
+    def endtime(self) -> Optional[str]:
         """Property Definition."""
         return self._endtime
 
@@ -158,12 +159,12 @@ class Placement(DataModel):
         return self._enddate
 
     @property
-    def roomid(self) -> int:
+    def roomid(self) -> Optional[int]:
         """Property Definition."""
         return self._roomid
 
     @property
-    def roomname(self) -> str:
+    def roomname(self) -> Optional[str]:
         """Property Definition."""
         return self._roomname
 

@@ -53,7 +53,7 @@ class StudentResponse(BaseModel):
     studentNumber: int
     hasPortalEnrollment: bool
     enrollments: list[EnrollmentResponse]
-    futureEnrollments: list[dict]
+    futureEnrollments: list[EnrollmentResponse]
     scheduleDays: Optional[list[ScheduleDayResponse]]
 
 
@@ -126,7 +126,7 @@ class CourseResponse(BaseModel):
     courseNumber: str
     isResponsive: bool
     sectionNumber: str
-    endYear: int
+    endYear: str
     schoolName: str
     trialID: int
     trialActive: bool
@@ -154,7 +154,7 @@ class AssignmentResponse(BaseModel):
     modifiedDate: Optional[str]
     courseName: str
     active: bool
-    scoringType: str
+    scoringType: Optional[str]
     score: Optional[str]
     scorePoints: Optional[str]
     scorePercentage: Optional[str]

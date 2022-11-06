@@ -2,6 +2,7 @@
 from ic_parent_api.base import DataModel
 from ic_parent_api.models.placement import Placement
 from ic_parent_api.ic_api_client import CourseResponse
+from typing import Optional
 
 
 class Course(DataModel):
@@ -99,7 +100,7 @@ class Course(DataModel):
         return self._trialactive
 
     @property
-    def roomname(self) -> str:
+    def roomname(self) -> Optional[str]:
         """Property Definition."""
         return self._roomname
 

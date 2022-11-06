@@ -1,6 +1,7 @@
 """Enrollment Model Definition."""
 from ic_parent_api.base import DataModel
-from ic_parent_api.ic_api_client import EnrollmentResponse
+from ic_parent_api.models.base import EnrollmentResponse
+from typing import Optional
 
 
 class Enrollment(DataModel):
@@ -66,7 +67,7 @@ class Enrollment(DataModel):
         return self._startdate
 
     @property
-    def enddate(self) -> str:
+    def enddate(self) -> Optional[str]:
         """Property Definition."""
         return self._enddate
 

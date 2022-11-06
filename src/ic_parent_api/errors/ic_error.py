@@ -12,7 +12,7 @@ class InfiniteCampusError(Exception):
         if len(self._text) > 0:
             self._message = self._text
         else:
-            self._message = None
+            self._message = ''
 
     @property
     def status(self) -> int:

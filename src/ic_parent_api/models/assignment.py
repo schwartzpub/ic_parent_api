@@ -1,6 +1,7 @@
 """Assignment Model Definition."""
 from ic_parent_api.base import DataModel
 from ic_parent_api.ic_api_client import AssignmentResponse
+from typing import Optional
 
 
 class Assignment(DataModel):
@@ -60,7 +61,7 @@ class Assignment(DataModel):
         return self._objectsectionid
 
     @property
-    def parentobjectsectionid(self) -> int:
+    def parentobjectsectionid(self) -> Optional[int]:
         """Property Definition."""
         return self._parentobjectsectionid
 
@@ -75,7 +76,7 @@ class Assignment(DataModel):
         return self._personid
 
     @property
-    def taskid(self) -> int:
+    def taskid(self) -> Optional[int]:
         """Property Definition."""
         return self._taskid
 
@@ -120,7 +121,7 @@ class Assignment(DataModel):
         return self._assigneddate
 
     @property
-    def modifieddate(self) -> str:
+    def modifieddate(self) -> Optional[str]:
         """Property Definition."""
         return self._modifieddate
 
@@ -135,156 +136,156 @@ class Assignment(DataModel):
         return self._active
 
     @property
-    def scoringtype(self) -> str:
+    def scoringtype(self) -> Optional[str]:
         """Property Definition."""
         return self._scoringtype
 
     @property
-    def score(self) -> str:
+    def score(self) -> Optional[str]:
         """Property Definition."""
         return self._score
 
     @property
-    def scorepoints(self) -> str:
+    def scorepoints(self) -> Optional[str]:
         """Property Definition."""
         return self._scorepoints
 
     @property
-    def scorepercentage(self) -> str:
+    def scorepercentage(self) -> Optional[str]:
         """Property Definition."""
         return self._scorepercentage
 
     @property
-    def totalpoints(self) -> float:
+    def totalpoints(self) -> Optional[float]:
         """Property Definition."""
         return self._totalpoints
 
     @property
-    def comments(self) -> str:
+    def comments(self) -> Optional[str]:
         """Property Definition."""
         return self._comments
 
     @property
-    def feedback(self) -> str:
+    def feedback(self) -> Optional[str]:
         """Property Definition."""
         return self._feedback
 
     @property
-    def late(self) -> bool:
+    def late(self) -> Optional[bool]:
         """Property Definition."""
         return self._late
 
     @property
-    def missing(self) -> bool:
+    def missing(self) -> Optional[bool]:
         """Property Definition."""
         return self._missing
 
     @property
-    def cheated(self) -> bool:
+    def cheated(self) -> Optional[bool]:
         """Property Definition."""
         return self._cheated
 
     @property
-    def dropped(self) -> bool:
+    def dropped(self) -> Optional[bool]:
         """Property Definition."""
         return self._dropped
 
     @property
-    def incomplete(self) -> bool:
+    def incomplete(self) -> Optional[bool]:
         """Property Definition."""
         return self._incomplete
 
     @property
-    def turnedin(self) -> bool:
+    def turnedin(self) -> Optional[bool]:
         """Property Definition."""
         return self._turnedin
 
     @property
-    def wysiwygsubmission(self) -> bool:
+    def wysiwygsubmission(self) -> Optional[bool]:
         """Property Definition."""
         return self._wysiwygsubmission
 
     @property
-    def upload(self) -> bool:
+    def upload(self) -> Optional[bool]:
         """Property Definition."""
         return self._upload
 
     @property
-    def drivesubmission(self) -> bool:
+    def drivesubmission(self) -> Optional[bool]:
         """Property Definition."""
         return self._drivesubmission
 
     @property
-    def multiplier(self) -> bool:
+    def multiplier(self) -> Optional[float]:
         """Property Definition."""
         return self._multiplier
 
     @property
-    def hasstudenthtml(self) -> bool:
+    def hasstudenthtml(self) -> Optional[bool]:
         """Property Definition."""
         return self._hasstudenthtml
 
     @property
-    def hasteacherhtml(self) -> bool:
+    def hasteacherhtml(self) -> Optional[bool]:
         """Property Definition."""
         return self._hasteacherhtml
 
     @property
-    def hasquiz(self) -> bool:
+    def hasquiz(self) -> Optional[bool]:
         """Property Definition."""
         return self._hasquiz
 
     @property
-    def haslti(self) -> bool:
+    def haslti(self) -> Optional[bool]:
         """Property Definition."""
         return self._haslti
 
     @property
-    def hasltiacceptsscores(self) -> bool:
+    def hasltiacceptsscores(self) -> Optional[bool]:
         """Property Definition."""
         return self._hasltiacceptsscores
 
     @property
-    def hasfile(self) -> bool:
+    def hasfile(self) -> Optional[bool]:
         """Property Definition."""
         return self._hasfile
 
     @property
-    def hasexternalfile(self) -> bool:
+    def hasexternalfile(self) -> Optional[bool]:
         """Property Definition."""
         return self._hasexternalfile
 
     @property
-    def hassubmission(self) -> bool:
+    def hassubmission(self) -> Optional[bool]:
         """Property Definition."""
         return self._hassubmission
 
     @property
-    def hasdiscussion(self) -> bool:
+    def hasdiscussion(self) -> Optional[bool]:
         """Property Definition."""
         return self._hasdiscussion
 
     @property
-    def hasrubric(self) -> bool:
+    def hasrubric(self) -> Optional[bool]:
         """Property Definition."""
         return self._hasrubric
 
     @property
-    def notgraded(self) -> bool:
+    def notgraded(self) -> Optional[bool]:
         """Property Definition."""
         return self._notgraded
 
     @property
-    def isvalidrubric(self) -> bool:
+    def isvalidrubric(self) -> Optional[bool]:
         """Property Definition."""
         return self._isvalidrubric
 
     @property
-    def isvalidmark(self) -> bool:
+    def isvalidmark(self) -> Optional[bool]:
         """Property Definition."""
         return self._isvalidmark
 
     @property
-    def includecampuslearning(self) -> bool:
+    def includecampuslearning(self) -> Optional[bool]:
         """Property Definition."""
         return self._includecampuslearning
