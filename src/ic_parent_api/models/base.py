@@ -131,7 +131,7 @@ class CourseResponse(BaseModel):
     trialID: int
     trialActive: bool
     roomName: Optional[str]
-    teacherDisplay: str
+    teacherDisplay: Optional[str]
     hideStandardsOnPortal: bool
     sectionPlacements: list[PlacementResponse]
 

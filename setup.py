@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="ic_parent_api",
-    version="0.0.7",
+    version="0.0.8",
     author="Jacob Schwartz",
     author_email="jake@schwartzpub.com",
     description="",

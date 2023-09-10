@@ -105,7 +105,7 @@ class Course(DataModel):
         return self._roomname
 
     @property
-    def teacherdisplay(self) -> str:
+    def teacherdisplay(self) -> Optional[str]:
         """Property Definition."""
         return self._teacherdisplay
 
