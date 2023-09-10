@@ -93,7 +93,7 @@ class PlacementResponse(BaseModel):
     endTime: Optional[str]
     periodName: str
     periodScheduleName: str
-    teacherDisplay: str
+    teacherDisplay: Optional[str]
     periodScheduleSequence: int
     structureID: int
     courseID: int

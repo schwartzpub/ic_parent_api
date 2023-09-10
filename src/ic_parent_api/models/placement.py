@@ -109,7 +109,7 @@ class Placement(DataModel):
         return self._periodschedulename
 
     @property
-    def teacherdisplay(self) -> str:
+    def teacherdisplay(self) -> Optional[str]:
         """Property Definition."""
         return self._teacherdisplay
 
