@@ -169,7 +169,7 @@ class Placement(DataModel):
         return self._roomname
 
     @property
-    def unitattendance(self) -> bool:
+    def unitattendance(self) -> Optional[bool]:
         """Property Definition."""
         return self._unitattendance
 

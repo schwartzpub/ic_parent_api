@@ -105,7 +105,7 @@ class PlacementResponse(BaseModel):
     endDate: str
     roomID: Optional[int]
     roomName: Optional[str]
-    unitAttendance: bool
+    unitAttendance: Optional[bool]
     attendance: bool
     isResponsive: bool
 
