@@ -21,6 +21,8 @@ python3 -m pip install ic-parent-api
 
 ### Usage
 
+Use developer tools in the browser and login normally. Under the Network tab get the `district` called `appName` from the **Request** from the **POST** to `https://school.infinitecampus.org/campus/verify.jsp`
+
 Example usage to get students, printing first names:
 
 ```python
@@ -30,7 +32,7 @@ from ic_parent_api import InfiniteCampus
 base_url = "https://school.infinitecampus.com"
 username = "myusername"
 password = "myp4ssw0rd!"
-district = "schooldistrict"
+district = "schooldistrict" #known as appName to infinitecampus
 
 async def get_students():
     client = InfiniteCampus(f"{base_url}",f"{username}",f"{password}",f"{district}")
