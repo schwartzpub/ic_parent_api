@@ -21,7 +21,9 @@ python3 -m pip install ic-parent-api
 
 ### Usage
 
-Use developer tools in the browser and login normally. Under the Network tab get the `district` called `appName` from the **Request** from the **POST** to `https://school.infinitecampus.org/campus/verify.jsp`
+At the login page inspect the page with developer tools and search for the hidden input with the name `appName`. Like in the image below.
+
+![Screenshot 2022-09-16 171957](https://user-images.githubusercontent.com/13734613/190816004-a062b221-0653-4655-9b37-b67211350e6b.jpg)
 
 Example usage to get students, printing first names:
 
