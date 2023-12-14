@@ -50,8 +50,8 @@ class InfiniteCampus():
         assignments = [Assignment(response) for response in assignmentsresp]
         return assignments
 
-    async def terms(self) -> list[Term]:
+    async def terms(self, structure_id) -> list[Term]:
         """Get Terms."""
-        termsresp = await self._api_client.get_terms()
+        termsresp = await self._api_client.get_terms(structure_id)
         terms = [Term(response) for response in termsresp]
         return terms
