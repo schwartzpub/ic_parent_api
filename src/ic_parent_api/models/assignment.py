@@ -1,11 +1,15 @@
 """Assignment Model Definition."""
+
 from ic_parent_api.base import DataModel
 from ic_parent_api.ic_api_client import AssignmentResponse
 from typing import Optional
+from datetime import datetime
+import dateutil.parser
 
 
 class Assignment(DataModel):
     """Assignment Model Definition."""
+
     def __init__(self, assignment_resp: AssignmentResponse):
         self._objectsectionid = assignment_resp.objectSectionID
         self._parentobjectsectionid = assignment_resp.parentObjectSectionID
@@ -111,9 +115,12 @@ class Assignment(DataModel):
         return self._sectionid
 
     @property
-    def duedate(self) -> str:
+    def duedate(self) -> Optional[datetime]:
         """Property Definition."""
-        return self._duedate
+        try:
+            return dateutil.parser.parse(self._duedate)
+        except (TypeError, ValueError):
+            return None
 
     @property
     def assigneddate(self) -> str:

@@ -1,10 +1,12 @@
 """ScheduleDay Model Definition."""
+
 from ic_parent_api.base import DataModel
 from ic_parent_api.ic_api_client import ScheduleDayResponse
 
 
 class ScheduleDay(DataModel):
     """ScheduleDay Model Definition."""
+
     def __init__(self, scheduleday_resp: ScheduleDayResponse):
         self._id = scheduleday_resp.id
         self._dayid = scheduleday_resp.dayID

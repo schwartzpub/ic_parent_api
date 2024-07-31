@@ -1,4 +1,5 @@
 """The Infinite Campus Parent API module"""
-from .infinitecampus import InfiniteCampus
+
+from .infinite_campus import InfiniteCampus
 
 NAME = "ic_parent_api"

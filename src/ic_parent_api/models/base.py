@@ -1,13 +1,17 @@
 """Base Model Definition."""
+
 from typing import Optional
 from pydantic import BaseModel, Field
+from datetime import date
 
 
 class ScheduleDayResponse(BaseModel):
     """ScheduleDay Response Definition."""
+
     class Config:
-        exclude = ['_model', '_hashCode']
-    id: str = Field(alias='_id')
+        exclude = ["_model", "_hashCode"]
+
+    id: str = Field(alias="_id")
     dayID: int
     calendarID: int
     structureID: int
@@ -21,6 +25,7 @@ class ScheduleDayResponse(BaseModel):
 
 class EnrollmentResponse(BaseModel):
     """Enrollment Response Definition."""
+
     enrollmentID: int
     personID: int
     calendarID: int
@@ -29,7 +34,7 @@ class EnrollmentResponse(BaseModel):
     endYear: int
     serviceType: str
     startDate: str
-    endDate: Optional[str] = None
+    endDate: Optional[date] = None
     grade: str
     structureName: str
     calendarName: str
@@ -43,6 +48,7 @@ class EnrollmentResponse(BaseModel):
 
 class StudentResponse(BaseModel):
     """Student Response Definition."""
+
     personID: int
     guardian: bool
     firstName: str
@@ -59,9 +65,11 @@ class StudentResponse(BaseModel):
 
 class TermResponse(BaseModel):
     """Term Response Definition."""
+
     class Config:
-        exclude = ['_model', '_hashCode']
-    id: str = Field(alias='_id')
+        exclude = ["_model", "_hashCode"]
+
+    id: str = Field(alias="_id")
     termID: int
     termScheduleID: int
     seq: int
@@ -77,9 +85,11 @@ class TermResponse(BaseModel):
 
 class PlacementResponse(BaseModel):
     """Course Placement Response Definition."""
+
     class Config:
-        exclude = ['_model', '_hashCode']
-    id: str = Field(alias='_id')
+        exclude = ["_model", "_hashCode"]
+
+    id: str = Field(alias="_id")
     sectionID: int
     termID: int
     termName: str
@@ -112,9 +122,11 @@ class PlacementResponse(BaseModel):
 
 class CourseResponse(BaseModel):
     """Course Response Definition."""
+
     class Config:
-        exclude = ['_model', '_hashCode']
-    id: str = Field(alias='_id')
+        exclude = ["_model", "_hashCode"]
+
+    id: str = Field(alias="_id")
     rosterID: int
     personID: int
     structureID: int
@@ -138,6 +150,7 @@ class CourseResponse(BaseModel):
 
 class AssignmentResponse(BaseModel):
     """Assignment Response Definition."""
+
     objectSectionID: int
     parentObjectSectionID: Optional[int] = None
     type: int
@@ -149,7 +162,7 @@ class AssignmentResponse(BaseModel):
     calendarID: int
     structureID: int
     sectionID: int
-    dueDate: str
+    dueDate: Optional[str] = None
     assignedDate: str
     modifiedDate: Optional[str] = None
     courseName: str

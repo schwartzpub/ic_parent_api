@@ -1,4 +1,5 @@
 """Course Model Definition."""
+
 from ic_parent_api.base import DataModel
 from ic_parent_api.models.placement import Placement
 from ic_parent_api.ic_api_client import CourseResponse
@@ -7,6 +8,7 @@ from typing import Optional
 
 class Course(DataModel):
     """Course Model Definition."""
+
     def __init__(self, course_resp: CourseResponse):
         self._id = course_resp.id
         self._rosterid = course_resp.rosterID

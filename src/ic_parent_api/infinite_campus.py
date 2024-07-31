@@ -1,4 +1,5 @@
 """Base Infinite Campus Class."""
+
 import logging
 
 from .models.student import Student
@@ -11,8 +12,9 @@ _LOGGER = logging.getLogger(__name__)
 _LOGGER.setLevel(logging.INFO)
 
 
-class InfiniteCampus():
+class InfiniteCampus:
     """Define InfiniteCampus Class."""
+
     def __init__(
         self,
         base_url,
@@ -22,7 +24,9 @@ class InfiniteCampus():
         path: str = None,
         debug=False,
     ):
-        self._api_client = InfiniteCampusApiClient(base_url, username, secret, district, path, debug)
+        self._api_client = InfiniteCampusApiClient(
+            base_url, username, secret, district, path, debug
+        )
 
         if debug:
             _LOGGER.setLevel(logging.DEBUG)

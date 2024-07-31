@@ -1,4 +1,5 @@
 """Placement Model Definition."""
+
 from ic_parent_api.base import DataModel
 from ic_parent_api.models.base import PlacementResponse
 from ic_parent_api.models.term import Term
@@ -7,6 +8,7 @@ from typing import Optional
 
 class Placement(DataModel):
     """Placement Model Definition."""
+
     def __init__(self, placement_resp: PlacementResponse):
         self._id = placement_resp.id
         self._sectionid = placement_resp.sectionID

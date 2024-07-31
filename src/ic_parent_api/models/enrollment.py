@@ -1,4 +1,5 @@
 """Enrollment Model Definition."""
+
 from ic_parent_api.base import DataModel
 from ic_parent_api.models.base import EnrollmentResponse
 from typing import Optional
@@ -6,6 +7,7 @@ from typing import Optional
 
 class Enrollment(DataModel):
     """Enrollment Model Definition."""
+
     def __init__(self, enrollment_resp: EnrollmentResponse):
         self._enrollmentid = enrollment_resp.enrollmentID
         self._personid = enrollment_resp.personID

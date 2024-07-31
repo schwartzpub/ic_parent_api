@@ -1,4 +1,5 @@
 """Student Model Definition."""
+
 from ic_parent_api.base import DataModel
 from ic_parent_api.models.scheduleday import ScheduleDay
 from ic_parent_api.models.enrollment import Enrollment
@@ -8,6 +9,7 @@ from typing import Optional
 
 class Student(DataModel):
     """Student Model Definition."""
+
     def __init__(self, student_resp: StudentResponse):
         self._personid = student_resp.personID
         self._guardian = student_resp.guardian

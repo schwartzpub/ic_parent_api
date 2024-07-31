@@ -1,4 +1,5 @@
 """Infinite Campus API Client."""
+
 import logging
 
 from urllib.parse import urljoin
@@ -6,8 +7,13 @@ from urllib.parse import urljoin
 import aiohttp
 
 from .errors import InfiniteCampusError
-from .models.base import StudentResponse, CourseResponse, \
-    AssignmentResponse, TermResponse, ScheduleDayResponse
+from .models.base import (
+    StudentResponse,
+    CourseResponse,
+    AssignmentResponse,
+    TermResponse,
+    ScheduleDayResponse,
+)
 
 _LOGGER = logging.getLogger(__name__)
 _LOGGER.setLevel(logging.INFO)
@@ -17,15 +23,15 @@ def _enable_debug_logging():
     _LOGGER.setLevel(logging.DEBUG)
 
 
-class InfiniteCampusApiClient():
+class InfiniteCampusApiClient:
     """Infinite Campus Parent API Client."""
+
     def __init__(
         self,
         base_url,
         username,
         secret,
         district,
-        path: str = None,
         debug=False,
     ):
         if debug:
@@ -44,11 +50,14 @@ class InfiniteCampusApiClient():
         """Test if we can authenticate with the district."""
         try:
             request_url = urljoin(
-                self._base_url, (f"/campus/verify.jsp?nonBrowser=true"
-                                 f"&username={self._username}"
-                                 f"&password={self._secret}"
-                                 f"&appName={self._district}"
-                                 "&portalLoginPage=parents")
+                self._base_url,
+                (
+                    f"/campus/verify.jsp?nonBrowser=true"
+                    f"&username={self._username}"
+                    f"&password={self._secret}"
+                    f"&appName={self._district}"
+                    "&portalLoginPage=parents"
+                ),
             )
             async with session.post(request_url) as authresponse:
                 response = authresponse
@@ -79,7 +88,9 @@ class InfiniteCampusApiClient():
         parsed_response = await self._get_request("/campus/api/portal/students")
         scheduledayslist: list[ScheduleDayResponse] = []
         if parsed_response:
-            studentresp: list[StudentResponse] = [StudentResponse(**resp) for resp in parsed_response]
+            studentresp: list[StudentResponse] = [
+                StudentResponse(**resp) for resp in parsed_response
+            ]
             for student in studentresp:
                 for enrollment in student.enrollments:
                     scheduledays = await self.get_scheduledays(enrollment.calendarID)
@@ -90,7 +101,9 @@ class InfiniteCampusApiClient():
 
     async def get_courses(self, student_id: int) -> list[CourseResponse]:
         """Get Infinite Campus Courses."""
-        parsed_response = await self._get_request(f"/campus/resources/portal/roster?&personID={student_id}")
+        parsed_response = await self._get_request(
+            f"/campus/resources/portal/roster?&personID={student_id}"
+        )
         if parsed_response:
             return [CourseResponse(**resp) for resp in parsed_response]
         return []
@@ -106,7 +119,9 @@ class InfiniteCampusApiClient():
 
     async def get_terms(self, structure_id) -> list[TermResponse]:
         """Get Infinite Campus Courses."""
-        parsed_response = await self._get_request(f"/campus/resources/term?structureID={structure_id}")
+        parsed_response = await self._get_request(
+            f"/campus/resources/term?structureID={structure_id}"
+        )
         if parsed_response:
             return [TermResponse(**resp) for resp in parsed_response]
         return []
