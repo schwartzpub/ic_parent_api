@@ -1,186 +1,159 @@
 """Placement Model Definition."""
 
+from typing import Optional
+
 from ic_parent_api.base import DataModel
 from ic_parent_api.models.base import PlacementResponse
 from ic_parent_api.models.term import Term
-from typing import Optional
 
 
 class Placement(DataModel):
     """Placement Model Definition."""
 
     def __init__(self, placement_resp: PlacementResponse):
-        self._id = placement_resp.id
-        self._sectionid = placement_resp.sectionID
-        self._termid = placement_resp.termID
-        self._termname = placement_resp.termName
-        self._termseq = placement_resp.termSeq
-        self._periodid = placement_resp.periodID
-        self._trialid = placement_resp.trialID
-        self._periodsequence = placement_resp.periodSequence
-        self._term = placement_resp.term
-        self._periodscheduleid = placement_resp.periodScheduleID
-        self._starttime = placement_resp.startTime
-        self._endtime = placement_resp.endTime
-        self._periodname = placement_resp.periodName
-        self._periodschedulename = placement_resp.periodScheduleName
-        self._teacherdisplay = placement_resp.teacherDisplay
-        self._periodschedulesequence = placement_resp.periodScheduleSequence
-        self._structureid = placement_resp.structureID
-        self._courseid = placement_resp.courseID
-        self._coursenumber = placement_resp.courseNumber
-        self._sectionnumber = placement_resp.sectionNumber
-        self._coursename = placement_resp.courseName
-        self._termscheduleid = placement_resp.termScheduleID
-        self._startdate = placement_resp.startDate
-        self._enddate = placement_resp.endDate
-        self._roomid = placement_resp.roomID
-        self._roomname = placement_resp.roomName
-        self._unitattendance = placement_resp.unitAttendance
-        self._attendance = placement_resp.attendance
-        self._isresponsive = placement_resp.isResponsive
+        self._placement_resp: PlacementResponse = placement_resp
 
     @property
-    def id(self) -> str:
+    def placement_id(self) -> str:
         """Property Definition."""
-        return self._id
+        return self._placement_resp.id
 
     @property
-    def sectionid(self) -> int:
+    def section_id(self) -> int:
         """Property Definition."""
-        return self._sectionid
+        return self._placement_resp.sectionID
 
     @property
-    def termid(self) -> int:
+    def term_id(self) -> int:
         """Property Definition."""
-        return self._termid
+        return self._placement_resp.termID
 
     @property
-    def termname(self) -> str:
+    def term_name(self) -> str:
         """Property Definition."""
-        return self._termname
+        return self._placement_resp.termName
 
     @property
-    def termseq(self) -> int:
+    def term_seq(self) -> int:
         """Property Definition."""
-        return self._termseq
+        return self._placement_resp.termSeq
 
     @property
-    def periodid(self) -> int:
+    def period_id(self) -> int:
         """Property Definition."""
-        return self._periodid
+        return self._placement_resp.periodID
 
     @property
-    def trialid(self) -> int:
+    def trial_id(self) -> int:
         """Property Definition."""
-        return self._trialid
+        return self._placement_resp.trialID
 
     @property
-    def periodsequence(self) -> int:
+    def period_sequence(self) -> int:
         """Property Definition."""
-        return self._periodsequence
+        return self._placement_resp.periodSequence
 
     @property
     def term(self) -> Term:
         """Property Definition."""
-        return Term(self._term)
+        return Term(self._placement_resp.term)
 
     @property
-    def periodscheduleid(self) -> int:
+    def period_schedule_id(self) -> int:
         """Property Definition."""
-        return self._periodscheduleid
+        return self._placement_resp.periodScheduleID
 
     @property
-    def starttime(self) -> Optional[str]:
+    def start_time(self) -> Optional[str]:
         """Property Definition."""
-        return self._starttime
+        return self._placement_resp.startTime
 
     @property
-    def endtime(self) -> Optional[str]:
+    def end_time(self) -> Optional[str]:
         """Property Definition."""
-        return self._endtime
+        return self._placement_resp.endTime
 
     @property
-    def periodname(self) -> str:
+    def period_name(self) -> str:
         """Property Definition."""
-        return self._periodname
+        return self._placement_resp.periodName
 
     @property
-    def periodschedulename(self) -> str:
+    def period_schedule_name(self) -> str:
         """Property Definition."""
-        return self._periodschedulename
+        return self._placement_resp.periodScheduleName
 
     @property
-    def teacherdisplay(self) -> Optional[str]:
+    def teacher_display(self) -> Optional[str]:
         """Property Definition."""
-        return self._teacherdisplay
+        return self._placement_resp.teacherDisplay
 
     @property
-    def periodschedulesequence(self) -> int:
+    def period_schedule_sequence(self) -> int:
         """Property Definition."""
-        return self._periodschedulesequence
+        return self._placement_resp.periodScheduleSequence
 
     @property
-    def structureid(self) -> int:
+    def structure_id(self) -> int:
         """Property Definition."""
-        return self._structureid
+        return self._placement_resp.structureID
 
     @property
-    def courseid(self) -> int:
+    def course_id(self) -> int:
         """Property Definition."""
-        return self._courseid
+        return self._placement_resp.courseID
 
     @property
-    def coursenumber(self) -> str:
+    def course_number(self) -> str:
         """Property Definition."""
-        return self._coursenumber
+        return self._placement_resp.courseNumber
 
     @property
-    def sectionnumber(self) -> int:
+    def section_number(self) -> int:
         """Property Definition."""
-        return self._sectionnumber
+        return self._placement_resp.sectionNumber
 
     @property
-    def coursename(self) -> str:
+    def course_name(self) -> str:
         """Property Definition."""
-        return self._coursename
+        return self._placement_resp.courseName
 
     @property
-    def termscheduleid(self) -> int:
+    def term_schedule_id(self) -> int:
         """Property Definition."""
-        return self._termscheduleid
+        return self._placement_resp.termScheduleID
 
     @property
-    def startdate(self) -> str:
+    def start_date(self) -> str:
         """Property Definition."""
-        return self._startdate
+        return self._placement_resp.startDate
 
     @property
-    def enddate(self) -> str:
+    def end_date(self) -> str:
         """Property Definition."""
-        return self._enddate
+        return self._placement_resp.endDate
 
     @property
-    def roomid(self) -> Optional[int]:
+    def room_id(self) -> Optional[int]:
         """Property Definition."""
-        return self._roomid
+        return self._placement_resp.roomID
 
     @property
-    def roomname(self) -> Optional[str]:
+    def room_name(self) -> Optional[str]:
         """Property Definition."""
-        return self._roomname
+        return self._placement_resp.roomName
 
     @property
-    def unitattendance(self) -> Optional[bool]:
+    def unit_attendance(self) -> Optional[bool]:
         """Property Definition."""
-        return self._unitattendance
+        return self._placement_resp.unitAttendance
 
     @property
     def attendance(self) -> bool:
         """Property Definition."""
-        return self._attendance
+        return self._placement_resp.attendance
 
     @property
-    def isresponsive(self) -> bool:
+    def is_responsive(self) -> bool:
         """Property Definition."""
-        return self._isresponsive
+        return self._placement_resp.isResponsive

@@ -1,15 +1,13 @@
 """Base Model Definition."""
 
+from dataclasses import dataclass
 from typing import Optional
-from pydantic import BaseModel, Field
 from datetime import date
+from pydantic import BaseModel, Field
 
 
 class ScheduleDayResponse(BaseModel):
     """ScheduleDay Response Definition."""
-
-    class Config:
-        exclude = ["_model", "_hashCode"]
 
     id: str = Field(alias="_id")
     dayID: int
@@ -66,9 +64,6 @@ class StudentResponse(BaseModel):
 class TermResponse(BaseModel):
     """Term Response Definition."""
 
-    class Config:
-        exclude = ["_model", "_hashCode"]
-
     id: str = Field(alias="_id")
     termID: int
     termScheduleID: int
@@ -85,9 +80,6 @@ class TermResponse(BaseModel):
 
 class PlacementResponse(BaseModel):
     """Course Placement Response Definition."""
-
-    class Config:
-        exclude = ["_model", "_hashCode"]
 
     id: str = Field(alias="_id")
     sectionID: int
@@ -123,9 +115,6 @@ class PlacementResponse(BaseModel):
 class CourseResponse(BaseModel):
     """Course Response Definition."""
 
-    class Config:
-        exclude = ["_model", "_hashCode"]
-
     id: str = Field(alias="_id")
     rosterID: int
     personID: int
@@ -146,7 +135,6 @@ class CourseResponse(BaseModel):
     teacherDisplay: Optional[str] = None
     hideStandardsOnPortal: bool
     sectionPlacements: list[PlacementResponse]
-
 
 class AssignmentResponse(BaseModel):
     """Assignment Response Definition."""
@@ -171,6 +159,9 @@ class AssignmentResponse(BaseModel):
     score: Optional[str] = None
     scorePoints: Optional[str] = None
     scorePercentage: Optional[str] = None
+    scoreModifiedDate: Optional[str] = None
+    releaseScoresTimeStamp: Optional[str] = None
+    attemptLimit: Optional[int] = None
     totalPoints: Optional[float] = None
     comments: Optional[str] = None
     feedback: Optional[str] = None

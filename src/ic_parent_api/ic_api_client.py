@@ -1,11 +1,11 @@
 """Infinite Campus API Client."""
 
 import logging
-
 from urllib.parse import urljoin
 
 import aiohttp
 
+from .ic_user import InfiniteCampusUser as User
 from .errors import InfiniteCampusError
 from .models.base import (
     StudentResponse,
@@ -28,10 +28,8 @@ class InfiniteCampusApiClient:
 
     def __init__(
         self,
-        base_url,
-        username,
-        secret,
-        district,
+        base_url: str,
+        user: User,
         debug=False,
     ):
         if debug:
@@ -39,14 +37,14 @@ class InfiniteCampusApiClient:
 
         self._base_url = base_url
 
-        _LOGGER.debug(f"generated base url: {self._base_url}")
+        _LOGGER.debug("base url: %s", self._base_url)
 
-        self._username = username
-        self._secret = secret
-        self._district = district
+        self._username = user.username
+        self._secret = user.password
+        self._district = user.district
         self._headers = {"Accept": "application/json"}
 
-    async def authenticate(self, session):
+    async def authenticate(self, session) -> bool:
         """Test if we can authenticate with the district."""
         try:
             request_url = urljoin(
@@ -66,7 +64,7 @@ class InfiniteCampusApiClient:
                     return True
                 raise InfiniteCampusError(400, "Bad Credentials")
         except Exception as error:
-            raise InfiniteCampusError(400, error)
+            raise InfiniteCampusError(400, error) from InfiniteCampusError
 
     async def _get_request(self, end_url: str):
         """Perform GET request to API endpoint."""

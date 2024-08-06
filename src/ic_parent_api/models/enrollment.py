@@ -1,119 +1,102 @@
 """Enrollment Model Definition."""
 
+from typing import Optional
 from ic_parent_api.base import DataModel
 from ic_parent_api.models.base import EnrollmentResponse
-from typing import Optional
 
 
 class Enrollment(DataModel):
     """Enrollment Model Definition."""
 
     def __init__(self, enrollment_resp: EnrollmentResponse):
-        self._enrollmentid = enrollment_resp.enrollmentID
-        self._personid = enrollment_resp.personID
-        self._calendarid = enrollment_resp.calendarID
-        self._structureid = enrollment_resp.structureID
-        self._districtid = enrollment_resp.districtID
-        self._endyear = enrollment_resp.endYear
-        self._servicetype = enrollment_resp.serviceType
-        self._startdate = enrollment_resp.startDate
-        self._enddate = enrollment_resp.endDate
-        self._grade = enrollment_resp.grade
-        self._structurename = enrollment_resp.structureName
-        self._calendarname = enrollment_resp.calendarName
-        self._schoolid = enrollment_resp.schoolID
-        self._schoolname = enrollment_resp.schoolName
-        self._showonportal = enrollment_resp.showOnPortal
-        self._futureshowonportal = enrollment_resp.futureShowOnPortal
-        self._calendarstartdate = enrollment_resp.calendarStartDate
-        self._calendarenddate = enrollment_resp.calendarEndDate
+        self._enrollment_resp: EnrollmentResponse = enrollment_resp
 
     @property
-    def enrollmentid(self) -> int:
+    def enrollment_id(self) -> int:
         """Property Definition."""
-        return self._enrollmentid
+        return self._enrollment_resp.enrollmentID
 
     @property
-    def personid(self) -> int:
+    def person_id(self) -> int:
         """Property Definition."""
-        return self._personid
+        return self._enrollment_resp.personID
 
     @property
-    def calendarid(self) -> int:
+    def structure_id(self) -> int:
         """Property Definition."""
-        return self._calendarid
+        return self._enrollment_resp.structureID
 
     @property
-    def structureid(self) -> int:
+    def structure_name(self) -> str:
         """Property Definition."""
-        return self._structureid
+        return self._enrollment_resp.structureName
 
     @property
-    def districtid(self) -> int:
+    def district_id(self) -> int:
         """Property Definition."""
-        return self._districtid
+        return self._enrollment_resp.districtID
 
     @property
-    def endyear(self) -> int:
+    def end_year(self) -> int:
         """Property Definition."""
-        return self._endyear
+        return self._enrollment_resp.endYear
 
     @property
-    def servicetype(self) -> str:
+    def service_type(self) -> str:
         """Property Definition."""
-        return self._servicetype
+        return self._enrollment_resp.serviceType
 
     @property
-    def startdate(self) -> str:
+    def start_date(self) -> str:
         """Property Definition."""
-        return self._startdate
+        return self._enrollment_resp.startDate
 
     @property
-    def enddate(self) -> Optional[str]:
+    def end_date(self) -> Optional[str]:
         """Property Definition."""
-        return self._enddate
+        return self._enrollment_resp.endDate
 
     @property
     def grade(self) -> str:
         """Property Definition."""
-        return self._grade
+        return self._enrollment_resp.grade
 
     @property
-    def structurename(self) -> str:
+    def school_id(self) -> int:
         """Property Definition."""
-        return self._structurename
+        return self._enrollment_resp.schoolID
 
     @property
-    def calendarname(self) -> str:
+    def school_name(self) -> str:
         """Property Definition."""
-        return self._calendarname
+        return self._enrollment_resp.schoolName
 
     @property
-    def schoolid(self) -> int:
+    def show_on_portal(self) -> bool:
         """Property Definition."""
-        return self._schoolid
+        return self._enrollment_resp.showOnPortal
 
     @property
-    def schoolname(self) -> str:
+    def future_show_on_portal(self) -> bool:
         """Property Definition."""
-        return self._schoolname
+        return self._enrollment_resp.futureShowOnPortal
 
     @property
-    def showonportal(self) -> bool:
+    def calendar_id(self) -> int:
         """Property Definition."""
-        return self._showonportal
+        return self._enrollment_resp.calendarID
 
     @property
-    def futureshowonportal(self) -> bool:
+    def calendar_name(self) -> str:
         """Property Definition."""
-        return self._futureshowonportal
+        return self._enrollment_resp.calendarName
 
     @property
-    def calendarstartdate(self) -> str:
+    def calendar_start_date(self) -> str:
         """Property Definition."""
-        return self._calendarstartdate
+        return self._enrollment_resp.calendarStartDate
 
     @property
-    def calendarenddate(self) -> str:
+    def calendar_end_date(self) -> str:
         """Property Definition."""
-        return self._calendarenddate
+        return self._enrollment_resp.calendarEndDate
