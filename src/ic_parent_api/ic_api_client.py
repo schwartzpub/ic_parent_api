@@ -57,10 +57,10 @@ class InfiniteCampusApiClient:
                     "&portalLoginPage=parents"
                 ),
             )
-            async with session.post(request_url) as authresponse:
-                response = authresponse
-                responsetext = await response.text()
-                if response.status == 200 and "password-error" not in responsetext:
+            async with session.post(request_url) as auth_response:
+                response = auth_response
+                response_text = await response.text()
+                if response.status == 200 and "password-error" not in response_text:
                     return True
                 raise InfiniteCampusError(400, "Bad Credentials")
         except Exception as error:
@@ -74,27 +74,27 @@ class InfiniteCampusApiClient:
             if authenticated:
                 async with session.get(f"{request_url}", headers=self._headers) as resp:
                     response = resp
-                    responsetext = await resp.text()
+                    response_text = await resp.text()
                     response_json = await resp.json()
                     if response.status >= 400:
-                        raise InfiniteCampusError(response.status, responsetext)
+                        raise InfiniteCampusError(response.status, response_text)
                     return response_json
             raise InfiniteCampusError(400, "Bad Credentials")
 
     async def get_students(self) -> list[StudentResponse]:
         """Get Infinite Campus Students."""
         parsed_response = await self._get_request("/campus/api/portal/students")
-        scheduledayslist: list[ScheduleDayResponse] = []
+        schedule_days_list: list[ScheduleDayResponse] = []
         if parsed_response:
-            studentresp: list[StudentResponse] = [
+            student_resp: list[StudentResponse] = [
                 StudentResponse(**resp) for resp in parsed_response
             ]
-            for student in studentresp:
+            for student in student_resp:
                 for enrollment in student.enrollments:
-                    scheduledays = await self.get_scheduledays(enrollment.calendarID)
-                    scheduledayslist.extend(scheduledays)
-                student.scheduleDays = scheduledayslist
-            return studentresp
+                    schedule_days = await self.get_schedule_days(enrollment.calendarID)
+                    schedule_days_list.extend(schedule_days)
+                student.scheduleDays = schedule_days_list
+            return student_resp
         return []
 
     async def get_courses(self, student_id: int) -> list[CourseResponse]:
@@ -124,7 +124,7 @@ class InfiniteCampusApiClient:
             return [TermResponse(**resp) for resp in parsed_response]
         return []
 
-    async def get_scheduledays(self, calendar_id: int) -> list[ScheduleDayResponse]:
+    async def get_schedule_days(self, calendar_id: int) -> list[ScheduleDayResponse]:
         """Get Infinite Campus Courses."""
         parsed_response = await self._get_request(
             f"/campus/resources/calendar/instructionalDay?calendarID={calendar_id}"

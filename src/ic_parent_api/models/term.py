@@ -1,5 +1,6 @@
 """Term Model Definition."""
 
+from datetime import date
 from ic_parent_api.base import DataModel
 from ic_parent_api.ic_api_client import TermResponse
 
@@ -42,12 +43,12 @@ class Term(DataModel):
         return self._seq
 
     @property
-    def start_date(self) -> str:
+    def start_date(self) -> date:
         """Property Definition."""
         return self._start_date
 
     @property
-    def end_date(self) -> str:
+    def end_date(self) -> date:
         """Property Definition."""
         return self._end_date
 

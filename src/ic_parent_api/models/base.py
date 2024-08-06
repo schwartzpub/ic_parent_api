@@ -2,7 +2,7 @@
 
 from dataclasses import dataclass
 from typing import Optional
-from datetime import date
+from datetime import date, datetime
 from pydantic import BaseModel, Field
 
 
@@ -14,7 +14,7 @@ class ScheduleDayResponse(BaseModel):
     calendarID: int
     structureID: int
     periodScheduleID: int
-    date: str
+    date: date
     requiresAttendance: bool
     isSchoolDay: bool
     duration: int
@@ -31,7 +31,7 @@ class EnrollmentResponse(BaseModel):
     districtID: int
     endYear: int
     serviceType: str
-    startDate: str
+    startDate: date
     endDate: Optional[date] = None
     grade: str
     structureName: str
@@ -40,8 +40,8 @@ class EnrollmentResponse(BaseModel):
     schoolName: str
     showOnPortal: bool
     futureShowOnPortal: bool
-    calendarStartDate: str
-    calendarEndDate: str
+    calendarStartDate: date
+    calendarEndDate: date
 
 
 class StudentResponse(BaseModel):
@@ -68,8 +68,8 @@ class TermResponse(BaseModel):
     termID: int
     termScheduleID: int
     seq: int
-    startDate: str
-    endDate: str
+    startDate: date
+    endDate: date
     termName: str
     structureID: int
     isPrimary: bool
@@ -91,8 +91,8 @@ class PlacementResponse(BaseModel):
     periodSequence: int
     term: TermResponse
     periodScheduleID: int
-    startTime: Optional[str] = None
-    endTime: Optional[str] = None
+    startTime: Optional[datetime] = None
+    endTime: Optional[datetime] = None
     periodName: str
     periodScheduleName: str
     teacherDisplay: Optional[str] = None
@@ -103,8 +103,8 @@ class PlacementResponse(BaseModel):
     sectionNumber: int
     courseName: str
     termScheduleID: int
-    startDate: str
-    endDate: str
+    startDate: datetime
+    endDate: datetime
     roomID: Optional[int] = None
     roomName: Optional[str] = None
     unitAttendance: Optional[bool] = None
@@ -150,17 +150,17 @@ class AssignmentResponse(BaseModel):
     calendarID: int
     structureID: int
     sectionID: int
-    dueDate: Optional[str] = None
-    assignedDate: str
-    modifiedDate: Optional[str] = None
+    dueDate: Optional[datetime] = None
+    assignedDate: datetime
+    modifiedDate: Optional[datetime] = None
     courseName: str
     active: bool
     scoringType: Optional[str] = None
     score: Optional[str] = None
     scorePoints: Optional[str] = None
     scorePercentage: Optional[str] = None
-    scoreModifiedDate: Optional[str] = None
-    releaseScoresTimeStamp: Optional[str] = None
+    scoreModifiedDate: Optional[datetime] = None
+    releaseScoresTimeStamp: Optional[datetime] = None
     attemptLimit: Optional[int] = None
     totalPoints: Optional[float] = None
     comments: Optional[str] = None

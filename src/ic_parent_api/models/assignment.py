@@ -2,7 +2,6 @@
 
 from typing import Optional
 from datetime import datetime
-import dateutil.parser
 from ic_parent_api.ic_api_client import AssignmentResponse
 from ic_parent_api.base import DataModel
 
@@ -70,18 +69,15 @@ class Assignment(DataModel):
     @property
     def due_date(self) -> Optional[datetime]:
         """Property Definition."""
-        try:
-            return dateutil.parser.parse(self._assignment_resp.dueDate)
-        except (TypeError, ValueError):
-            return None
+        return self._assignment_resp.dueDate
 
     @property
-    def assigned_date(self) -> str:
+    def assigned_date(self) -> datetime:
         """Property Definition."""
         return self._assignment_resp.assignedDate
 
     @property
-    def modified_date(self) -> Optional[str]:
+    def modified_date(self) -> Optional[datetime]:
         """Property Definition."""
         return self._assignment_resp.modifiedDate
 
