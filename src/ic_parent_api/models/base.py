@@ -1,18 +1,19 @@
 """Base Model Definition."""
+
 from typing import Optional
+from datetime import date, datetime
 from pydantic import BaseModel, Field
 
 
 class ScheduleDayResponse(BaseModel):
     """ScheduleDay Response Definition."""
-    class Config:
-        exclude = ['_model', '_hashCode']
-    id: str = Field(alias='_id')
+
+    id: str = Field(alias="_id")
     dayID: int
     calendarID: int
     structureID: int
     periodScheduleID: int
-    date: str
+    date: date
     requiresAttendance: bool
     isSchoolDay: bool
     duration: int
@@ -21,6 +22,7 @@ class ScheduleDayResponse(BaseModel):
 
 class EnrollmentResponse(BaseModel):
     """Enrollment Response Definition."""
+
     enrollmentID: int
     personID: int
     calendarID: int
@@ -28,8 +30,8 @@ class EnrollmentResponse(BaseModel):
     districtID: int
     endYear: int
     serviceType: str
-    startDate: str
-    endDate: Optional[str] = None
+    startDate: date
+    endDate: Optional[date] = None
     grade: str
     structureName: str
     calendarName: str
@@ -37,12 +39,13 @@ class EnrollmentResponse(BaseModel):
     schoolName: str
     showOnPortal: bool
     futureShowOnPortal: bool
-    calendarStartDate: str
-    calendarEndDate: str
+    calendarStartDate: date
+    calendarEndDate: date
 
 
 class StudentResponse(BaseModel):
     """Student Response Definition."""
+
     personID: int
     guardian: bool
     firstName: str
@@ -59,14 +62,13 @@ class StudentResponse(BaseModel):
 
 class TermResponse(BaseModel):
     """Term Response Definition."""
-    class Config:
-        exclude = ['_model', '_hashCode']
-    id: str = Field(alias='_id')
+
+    id: str = Field(alias="_id")
     termID: int
     termScheduleID: int
     seq: int
-    startDate: str
-    endDate: str
+    startDate: date
+    endDate: date
     termName: str
     structureID: int
     isPrimary: bool
@@ -77,9 +79,8 @@ class TermResponse(BaseModel):
 
 class PlacementResponse(BaseModel):
     """Course Placement Response Definition."""
-    class Config:
-        exclude = ['_model', '_hashCode']
-    id: str = Field(alias='_id')
+
+    id: str = Field(alias="_id")
     sectionID: int
     termID: int
     termName: str
@@ -89,8 +90,8 @@ class PlacementResponse(BaseModel):
     periodSequence: int
     term: TermResponse
     periodScheduleID: int
-    startTime: Optional[str] = None
-    endTime: Optional[str] = None
+    startTime: Optional[datetime] = None
+    endTime: Optional[datetime] = None
     periodName: str
     periodScheduleName: str
     teacherDisplay: Optional[str] = None
@@ -101,8 +102,8 @@ class PlacementResponse(BaseModel):
     sectionNumber: int
     courseName: str
     termScheduleID: int
-    startDate: str
-    endDate: str
+    startDate: datetime
+    endDate: datetime
     roomID: Optional[int] = None
     roomName: Optional[str] = None
     unitAttendance: Optional[bool] = None
@@ -112,9 +113,8 @@ class PlacementResponse(BaseModel):
 
 class CourseResponse(BaseModel):
     """Course Response Definition."""
-    class Config:
-        exclude = ['_model', '_hashCode']
-    id: str = Field(alias='_id')
+
+    id: str = Field(alias="_id")
     rosterID: int
     personID: int
     structureID: int
@@ -135,9 +135,9 @@ class CourseResponse(BaseModel):
     hideStandardsOnPortal: bool
     sectionPlacements: list[PlacementResponse]
 
-
 class AssignmentResponse(BaseModel):
     """Assignment Response Definition."""
+
     objectSectionID: int
     parentObjectSectionID: Optional[int] = None
     type: int
@@ -149,15 +149,18 @@ class AssignmentResponse(BaseModel):
     calendarID: int
     structureID: int
     sectionID: int
-    dueDate: str
-    assignedDate: str
-    modifiedDate: Optional[str] = None
+    dueDate: Optional[datetime] = None
+    assignedDate: datetime
+    modifiedDate: Optional[datetime] = None
     courseName: str
     active: bool
     scoringType: Optional[str] = None
     score: Optional[str] = None
     scorePoints: Optional[str] = None
     scorePercentage: Optional[str] = None
+    scoreModifiedDate: Optional[datetime] = None
+    releaseScoresTimeStamp: Optional[datetime] = None
+    attemptLimit: Optional[int] = None
     totalPoints: Optional[float] = None
     comments: Optional[str] = None
     feedback: Optional[str] = None

@@ -1,120 +1,104 @@
 """Course Model Definition."""
+
+from typing import Optional
 from ic_parent_api.base import DataModel
 from ic_parent_api.models.placement import Placement
 from ic_parent_api.ic_api_client import CourseResponse
-from typing import Optional
 
 
 class Course(DataModel):
     """Course Model Definition."""
-    def __init__(self, course_resp: CourseResponse):
-        self._id = course_resp.id
-        self._rosterid = course_resp.rosterID
-        self._personid = course_resp.personID
-        self._structureid = course_resp.structureID
-        self._calendarid = course_resp.calendarID
-        self._schoolid = course_resp.schoolID
-        self._courseid = course_resp.courseID
-        self._sectionid = course_resp.sectionID
-        self._coursename = course_resp.courseName
-        self._coursenumber = course_resp.courseNumber
-        self._isresponsive = course_resp.isResponsive
-        self._sectionnumber = course_resp.sectionNumber
-        self._endyear = course_resp.endYear
-        self._schoolname = course_resp.schoolName
-        self._trialid = course_resp.trialID
-        self._trialactive = course_resp.trialActive
-        self._roomname = course_resp.roomName
-        self._teacherdisplay = course_resp.teacherDisplay
-        self._hidestandardsonportal = course_resp.hideStandardsOnPortal
-        self._sectionplacements = course_resp.sectionPlacements
 
+    def __init__(self, course_resp: CourseResponse):
+        self._course_resp: CourseResponse = course_resp
+
+# pylint: disable=C0103
     @property
     def id(self) -> str:
         """Property Definition."""
-        return self._id
+        return self._course_resp.id
+# pylint: enable=C0103
+    @property
+    def roster_id(self) -> int:
+        """Property Definition."""
+        return self._course_resp.rosterID
 
     @property
-    def rosterid(self) -> int:
+    def person_id(self) -> int:
         """Property Definition."""
-        return self._rosterid
+        return self._course_resp.personID
 
     @property
-    def personid(self) -> int:
+    def structure_id(self) -> int:
         """Property Definition."""
-        return self._personid
+        return self._course_resp.structureID
 
     @property
-    def structureid(self) -> int:
+    def calendar_id(self) -> int:
         """Property Definition."""
-        return self._structureid
+        return self._course_resp.calendarID
 
     @property
-    def calendarid(self) -> int:
+    def school_id(self) -> int:
         """Property Definition."""
-        return self._calendarid
+        return self._course_resp.schoolID
 
     @property
-    def schoolid(self) -> int:
+    def course_name(self) -> str:
         """Property Definition."""
-        return self._schoolid
+        return self._course_resp.courseName
 
     @property
-    def coursename(self) -> str:
+    def course_number(self) -> str:
         """Property Definition."""
-        return self._coursename
+        return self._course_resp.courseNumber
 
     @property
-    def coursenumber(self) -> str:
+    def is_responsive(self) -> bool:
         """Property Definition."""
-        return self._coursenumber
+        return self._course_resp.isResponsive
 
     @property
-    def isresponsive(self) -> bool:
+    def section_number(self) -> str:
         """Property Definition."""
-        return self._isresponsive
+        return self._course_resp.sectionNumber
 
     @property
-    def sectionnumber(self) -> str:
+    def end_year(self) -> str:
         """Property Definition."""
-        return self._sectionnumber
+        return self._course_resp.endYear
 
     @property
-    def endyear(self) -> str:
+    def school_name(self) -> str:
         """Property Definition."""
-        return self._endyear
+        return self._course_resp.schoolName
 
     @property
-    def schoolname(self) -> str:
+    def trial_id(self) -> int:
         """Property Definition."""
-        return self._schoolname
+        return self._course_resp.trialID
 
     @property
-    def trialid(self) -> int:
+    def trial_active(self) -> bool:
         """Property Definition."""
-        return self._trialid
+        return self._course_resp.trialActive
 
     @property
-    def trialactive(self) -> bool:
+    def room_name(self) -> Optional[str]:
         """Property Definition."""
-        return self._trialactive
+        return self._course_resp.roomName
 
     @property
-    def roomname(self) -> Optional[str]:
+    def teacher_display(self) -> Optional[str]:
         """Property Definition."""
-        return self._roomname
+        return self._course_resp.teacherDisplay
 
     @property
-    def teacherdisplay(self) -> Optional[str]:
+    def hide_standards_on_portal(self) -> bool:
         """Property Definition."""
-        return self._teacherdisplay
+        return self._course_resp.hideStandardsOnPortal
 
     @property
-    def hidestandardsonportal(self) -> bool:
+    def section_placements(self) -> list[Placement]:
         """Property Definition."""
-        return self._hidestandardsonportal
-
-    @property
-    def sectionplacements(self) -> list[Placement]:
-        """Property Definition."""
-        return [Placement(placement) for placement in self._sectionplacements]
+        return [Placement(placement) for placement in self._course_resp.sectionPlacements]

@@ -2,6 +2,7 @@
 
 Borrowed from pygrocy (https://github.com/SebRut/pygrocy)
 """
+
 import json
 
 
@@ -13,9 +14,10 @@ def get_val(obj):
     return obj
 
 
-class DataModel():
+class DataModel:
     """Define DataModel."""
-    def tojson(self):
+
+    def to_json(self):
         """Convert to JSON."""
         return json.dumps(self.as_dict())
 

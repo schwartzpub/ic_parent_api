@@ -1,23 +1,26 @@
 """Term Model Definition."""
+
+from datetime import date
 from ic_parent_api.base import DataModel
 from ic_parent_api.ic_api_client import TermResponse
 
 
 class Term(DataModel):
     """Term Model Definition."""
+
     def __init__(self, term_resp: TermResponse):
         self._id = term_resp.id
-        self._termid = term_resp.termID
-        self._termscheduleid = term_resp.termScheduleID
+        self._term_id = term_resp.termID
+        self._term_schedule_id = term_resp.termScheduleID
         self._seq = term_resp.seq
-        self._startdate = term_resp.startDate
-        self._enddate = term_resp.endDate
-        self._termname = term_resp.termName
-        self._structureid = term_resp.structureID
-        self._isprimary = term_resp.isPrimary
-        self._termschedulename = term_resp.termScheduleName
-        self._calendarid = term_resp.calendarID
-        self._schedulestructurename = term_resp.scheduleStructureName
+        self._start_date = term_resp.startDate
+        self._end_date = term_resp.endDate
+        self._term_name = term_resp.termName
+        self._structure_id = term_resp.structureID
+        self._is_primary = term_resp.isPrimary
+        self._term_schedule_name = term_resp.termScheduleName
+        self._calendar_id = term_resp.calendarID
+        self._schedule_structure_name = term_resp.scheduleStructureName
 
     @property
     def id(self) -> str:
@@ -25,14 +28,14 @@ class Term(DataModel):
         return self._id
 
     @property
-    def termid(self) -> int:
+    def term_id(self) -> int:
         """Property Definition."""
-        return self._termid
+        return self._term_id
 
     @property
-    def termscheduleid(self) -> int:
+    def term_schedule_id(self) -> int:
         """Property Definition."""
-        return self._termscheduleid
+        return self._term_schedule_id
 
     @property
     def seq(self) -> int:
@@ -40,41 +43,41 @@ class Term(DataModel):
         return self._seq
 
     @property
-    def startdate(self) -> str:
+    def start_date(self) -> date:
         """Property Definition."""
-        return self._startdate
+        return self._start_date
 
     @property
-    def enddate(self) -> str:
+    def end_date(self) -> date:
         """Property Definition."""
-        return self._enddate
+        return self._end_date
 
     @property
-    def termname(self) -> str:
+    def term_name(self) -> str:
         """Property Definition."""
-        return self._termname
+        return self._term_name
 
     @property
-    def structureid(self) -> int:
+    def structure_id(self) -> int:
         """Property Definition."""
-        return self._structureid
+        return self._structure_id
 
     @property
-    def isprimary(self) -> bool:
+    def is_primary(self) -> bool:
         """Property Definition."""
-        return self._isprimary
+        return self._is_primary
 
     @property
-    def termschedulename(self) -> str:
+    def term_schedule_name(self) -> str:
         """Property Definition."""
-        return self._termschedulename
+        return self._term_schedule_name
 
     @property
-    def calendarid(self) -> int:
+    def calendar_id(self) -> int:
         """Property Definition."""
-        return self._calendarid
+        return self._calendar_id
 
     @property
-    def schedulestructurename(self) -> str:
+    def schedule_structure_name(self) -> str:
         """Property Definition."""
-        return self._schedulestructurename
+        return self._schedule_structure_name

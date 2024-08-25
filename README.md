@@ -29,15 +29,17 @@ Example usage to get students, printing first names:
 
 ```python
 import asyncio
+from .ic_user import InfiniteCampusUser as User
 from ic_parent_api import InfiniteCampus
 
 base_url = "https://school.infinitecampus.com"
 username = "myusername"
 password = "myp4ssw0rd!"
-district = "schooldistrict" #known as appName to infinitecampus
+district = "schooldistrict" #known as appName to infinite campus
 
 async def get_students():
-    client = InfiniteCampus(f"{base_url}",f"{username}",f"{password}",f"{district}")
+    user = User(username, password, district)
+    client = InfiniteCampus(base_url, user)
     return await client.students()
 
 students = asyncio.run(get_students())

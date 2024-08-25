@@ -1,291 +1,247 @@
 """Assignment Model Definition."""
-from ic_parent_api.base import DataModel
-from ic_parent_api.ic_api_client import AssignmentResponse
-from typing import Optional
 
+from typing import Optional
+from datetime import datetime
+from ic_parent_api.ic_api_client import AssignmentResponse
+from ic_parent_api.base import DataModel
 
 class Assignment(DataModel):
     """Assignment Model Definition."""
-    def __init__(self, assignment_resp: AssignmentResponse):
-        self._objectsectionid = assignment_resp.objectSectionID
-        self._parentobjectsectionid = assignment_resp.parentObjectSectionID
-        self._type = assignment_resp.type
-        self._personid = assignment_resp.personID
-        self._taskid = assignment_resp.taskID
-        self._groupactivityid = assignment_resp.groupActivityID
-        self._termids = assignment_resp.termIDs
-        self._assignmentname = assignment_resp.assignmentName
-        self._calendarid = assignment_resp.calendarID
-        self._structureid = assignment_resp.structureID
-        self._sectionid = assignment_resp.sectionID
-        self._duedate = assignment_resp.dueDate
-        self._assigneddate = assignment_resp.assignedDate
-        self._modifieddate = assignment_resp.modifiedDate
-        self._coursename = assignment_resp.courseName
-        self._active = assignment_resp.active
-        self._scoringtype = assignment_resp.scoringType
-        self._score = assignment_resp.score
-        self._scorepoints = assignment_resp.scorePoints
-        self._scorepercentage = assignment_resp.scorePercentage
-        self._totalpoints = assignment_resp.totalPoints
-        self._comments = assignment_resp.comments
-        self._feedback = assignment_resp.feedback
-        self._late = assignment_resp.late
-        self._missing = assignment_resp.missing
-        self._cheated = assignment_resp.cheated
-        self._dropped = assignment_resp.dropped
-        self._incomplete = assignment_resp.incomplete
-        self._turnedin = assignment_resp.turnedIn
-        self._wysiwygsubmission = assignment_resp.wysiwygSubmission
-        self._upload = assignment_resp.upload
-        self._drivesubmission = assignment_resp.driveSubmission
-        self._multiplier = assignment_resp.multiplier
-        self._hasstudenthtml = assignment_resp.hasStudentHTML
-        self._hasteacherhtml = assignment_resp.hasTeacherHTML
-        self._hasquiz = assignment_resp.hasQuiz
-        self._haslti = assignment_resp.hasLTI
-        self._hasltiacceptsscores = assignment_resp.hasLTIAcceptsScores
-        self._hasfile = assignment_resp.hasFile
-        self._hasexternalfile = assignment_resp.hasExternalFile
-        self._hassubmission = assignment_resp.hasSubmission
-        self._hasdiscussion = assignment_resp.hasDiscussion
-        self._hasrubric = assignment_resp.hasRubric
-        self._notgraded = assignment_resp.notGraded
-        self._isvalidrubric = assignment_resp.isValidRubric
-        self._isvalidmark = assignment_resp.isValidMark
-        self._includecampuslearning = assignment_resp.includeCampusLearning
 
+    def __init__(self, assignment_resp: AssignmentResponse):
+        self._assignment_resp=assignment_resp
+    
     @property
-    def objectsectionid(self) -> int:
+    def object_section_id(self) -> int:
         """Property Definition."""
-        return self._objectsectionid
+        return self._assignment_resp.objectSectionID
 
     @property
     def parentobjectsectionid(self) -> Optional[int]:
         """Property Definition."""
-        return self._parentobjectsectionid
+        return self._assignment_resp.parentObjectSectionID
 
     @property
     def type(self) -> int:
         """Property Definition."""
-        return self._type
+        return self._assignment_resp.type
 
     @property
     def personid(self) -> int:
         """Property Definition."""
-        return self._personid
+        return self._assignment_resp.personID
 
     @property
     def taskid(self) -> Optional[int]:
         """Property Definition."""
-        return self._taskid
+        return self._assignment_resp.taskID
 
     @property
     def groupactivityid(self) -> int:
         """Property Definition."""
-        return self._groupactivityid
+        return self._assignment_resp.groupActivityID
 
     @property
     def termids(self) -> list[int]:
         """Property Definition."""
-        return self._termids
+        return self._assignment_resp.termIDs
 
     @property
-    def assignmentname(self) -> str:
+    def assignment_name(self) -> str:
         """Property Definition."""
-        return self._assignmentname
+        return self._assignment_resp.assignmentName
 
     @property
     def calendarid(self) -> int:
         """Property Definition."""
-        return self._calendarid
+        return self._assignment_resp.calendarID
 
     @property
     def structureid(self) -> int:
         """Property Definition."""
-        return self._structureid
+        return self._assignment_resp.structureID
 
     @property
     def sectionid(self) -> int:
         """Property Definition."""
-        return self._sectionid
+        return self._assignment_resp.sectionID
 
     @property
-    def duedate(self) -> str:
+    def due_date(self) -> Optional[datetime]:
         """Property Definition."""
-        return self._duedate
+        return self._assignment_resp.dueDate
 
     @property
-    def assigneddate(self) -> str:
+    def assigned_date(self) -> datetime:
         """Property Definition."""
-        return self._assigneddate
+        return self._assignment_resp.assignedDate
 
     @property
-    def modifieddate(self) -> Optional[str]:
+    def modified_date(self) -> Optional[datetime]:
         """Property Definition."""
-        return self._modifieddate
+        return self._assignment_resp.modifiedDate
 
     @property
-    def coursename(self) -> str:
+    def course_name(self) -> str:
         """Property Definition."""
-        return self._coursename
+        return self._assignment_resp.courseName
 
     @property
     def active(self) -> bool:
         """Property Definition."""
-        return self._active
+        return self._assignment_resp.active
 
     @property
     def scoringtype(self) -> Optional[str]:
         """Property Definition."""
-        return self._scoringtype
+        return self._assignment_resp.scoringType
 
     @property
     def score(self) -> Optional[str]:
         """Property Definition."""
-        return self._score
+        return self._assignment_resp.score
 
     @property
     def scorepoints(self) -> Optional[str]:
         """Property Definition."""
-        return self._scorepoints
+        return self._assignment_resp.scorePoints
 
     @property
     def scorepercentage(self) -> Optional[str]:
         """Property Definition."""
-        return self._scorepercentage
+        return self._assignment_resp.scorePercentage
 
     @property
     def totalpoints(self) -> Optional[float]:
         """Property Definition."""
-        return self._totalpoints
+        return self._assignment_resp.totalPoints
 
     @property
     def comments(self) -> Optional[str]:
         """Property Definition."""
-        return self._comments
+        return self._assignment_resp.comments
 
     @property
     def feedback(self) -> Optional[str]:
         """Property Definition."""
-        return self._feedback
+        return self._assignment_resp.feedback
 
     @property
     def late(self) -> Optional[bool]:
         """Property Definition."""
-        return self._late
+        return self._assignment_resp.late
 
     @property
     def missing(self) -> Optional[bool]:
         """Property Definition."""
-        return self._missing
+        return self._assignment_resp.missing
 
     @property
     def cheated(self) -> Optional[bool]:
         """Property Definition."""
-        return self._cheated
+        return self._assignment_resp.cheated
 
     @property
     def dropped(self) -> Optional[bool]:
         """Property Definition."""
-        return self._dropped
+        return self._assignment_resp.dropped
 
     @property
     def incomplete(self) -> Optional[bool]:
         """Property Definition."""
-        return self._incomplete
+        return self._assignment_resp.incomplete
 
     @property
     def turnedin(self) -> Optional[bool]:
         """Property Definition."""
-        return self._turnedin
+        return self._assignment_resp.turnedIn
 
     @property
     def wysiwygsubmission(self) -> Optional[bool]:
         """Property Definition."""
-        return self._wysiwygsubmission
+        return self._assignment_resp.wysiwygSubmission
 
     @property
     def upload(self) -> Optional[bool]:
         """Property Definition."""
-        return self._upload
+        return self._assignment_resp.upload
 
     @property
     def drivesubmission(self) -> Optional[bool]:
         """Property Definition."""
-        return self._drivesubmission
+        return self._assignment_resp.driveSubmission
 
     @property
     def multiplier(self) -> Optional[float]:
         """Property Definition."""
-        return self._multiplier
+        return self._assignment_resp.multiplier
 
     @property
     def hasstudenthtml(self) -> Optional[bool]:
         """Property Definition."""
-        return self._hasstudenthtml
+        return self._assignment_resp.hasStudentHTML
 
     @property
     def hasteacherhtml(self) -> Optional[bool]:
         """Property Definition."""
-        return self._hasteacherhtml
+        return self._assignment_resp.hasTeacherHTML
 
     @property
     def hasquiz(self) -> Optional[bool]:
         """Property Definition."""
-        return self._hasquiz
+        return self._assignment_resp.hasQuiz
 
     @property
     def haslti(self) -> Optional[bool]:
         """Property Definition."""
-        return self._haslti
+        return self._assignment_resp.hasLTI
 
     @property
     def hasltiacceptsscores(self) -> Optional[bool]:
         """Property Definition."""
-        return self._hasltiacceptsscores
+        return self._assignment_resp.hasLTIAcceptsScores
 
     @property
     def hasfile(self) -> Optional[bool]:
         """Property Definition."""
-        return self._hasfile
+        return self._assignment_resp.hasFile
 
     @property
     def hasexternalfile(self) -> Optional[bool]:
         """Property Definition."""
-        return self._hasexternalfile
+        return self._assignment_resp.hasExternalFile
 
     @property
     def hassubmission(self) -> Optional[bool]:
         """Property Definition."""
-        return self._hassubmission
+        return self._assignment_resp.hasSubmission
 
     @property
     def hasdiscussion(self) -> Optional[bool]:
         """Property Definition."""
-        return self._hasdiscussion
+        return self._assignment_resp.hasDiscussion
 
     @property
     def hasrubric(self) -> Optional[bool]:
         """Property Definition."""
-        return self._hasrubric
+        return self._assignment_resp.hasRubric
 
     @property
     def notgraded(self) -> Optional[bool]:
         """Property Definition."""
-        return self._notgraded
+        return self._assignment_resp.notGraded
 
     @property
     def isvalidrubric(self) -> Optional[bool]:
         """Property Definition."""
-        return self._isvalidrubric
+        return self._assignment_resp.isValidRubric
 
     @property
     def isvalidmark(self) -> Optional[bool]:
         """Property Definition."""
-        return self._isvalidmark
+        return self._assignment_resp.isValidMark
 
     @property
     def includecampuslearning(self) -> Optional[bool]:
         """Property Definition."""
-        return self._includecampuslearning
+        return self._assignment_resp.includeCampusLearning
