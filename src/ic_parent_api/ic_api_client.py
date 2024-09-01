@@ -106,7 +106,7 @@ class InfiniteCampusApiClient():
 
     async def get_terms(self) -> list[TermResponse]:
         """Get Infinite Campus Courses."""
-        parsed_response = await self._get_request("/campus/resources/term?structureID=1117")
+        parsed_response = await self._get_request("/campus/resources/term?structureID=1210")
         if parsed_response:
             return [TermResponse(**resp) for resp in parsed_response]
         return []
