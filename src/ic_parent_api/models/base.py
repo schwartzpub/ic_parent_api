@@ -126,7 +126,7 @@ class CourseResponse(BaseModel):
     courseNumber: str
     isResponsive: bool
     sectionNumber: str
-    endYear: str
+    endYear: int
     schoolName: str
     trialID: int
     trialActive: bool
