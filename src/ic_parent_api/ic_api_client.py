@@ -7,7 +7,8 @@ import aiohttp
 
 from .errors import InfiniteCampusError
 from .models.base import StudentResponse, CourseResponse, \
-    AssignmentResponse, TermResponse, ScheduleDayResponse
+    AssignmentResponse, TermResponse, ScheduleDayResponse, \
+    GradeResponse, AttendanceResponse, MessageResponse
 
 _LOGGER = logging.getLogger(__name__)
 _LOGGER.setLevel(logging.INFO)
@@ -119,3 +120,46 @@ class InfiniteCampusApiClient():
         if parsed_response:
             return [ScheduleDayResponse(**resp) for resp in parsed_response]
         return []
+
+    async def get_grades(self, student_id: int) -> list[GradeResponse]:
+        """Get Infinite Campus Grades for a student."""
+        parsed_response = await self._get_request(
+            f"/campus/resources/portal/grades?personID={student_id}"
+        )
+        if parsed_response:
+            return [GradeResponse(**resp) for resp in parsed_response]
+        return []
+
+    async def get_attendance(self, enrollment_id: int, student_id: int) -> AttendanceResponse:
+        """Get Infinite Campus Attendance for a student enrollment."""
+        parsed_response = await self._get_request(
+            f"/campus/resources/portal/attendance/{enrollment_id}"
+            f"?courseSummary=true&personID={student_id}"
+        )
+        if parsed_response:
+            return AttendanceResponse(**parsed_response)
+        return AttendanceResponse(terms=[])
+
+    async def get_messages(self) -> list[MessageResponse]:
+        """Get Infinite Campus Inbox Messages."""
+        parsed_response = await self._get_request(
+            "/campus/api/portal/process-message"
+        )
+        if parsed_response:
+            return [MessageResponse(**resp) for resp in parsed_response]
+        return []
+
+    async def get_message_detail(
+        self,
+        message_id: str,
+        message_recipient_id: str,
+        process_message_id: str
+    ) -> dict:
+        """Get full message content."""
+        parsed_response = await self._get_request(
+            f"/campus/prism?x=messenger.MessengerEngine-getMessageRecipientView"
+            f"&messageID={message_id}"
+            f"&messageRecipientID={message_recipient_id}"
+            f"&processMessageID={process_message_id}"
+        )
+        return parsed_response or {}

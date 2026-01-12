@@ -185,3 +185,131 @@ class AssignmentResponse(BaseModel):
     isValidRubric: Optional[bool] = None
     isValidMark: Optional[bool] = None
     includeCampusLearning: Optional[bool] = None
+
+
+class GradingTaskResponse(BaseModel):
+    """Grading Task Response Definition."""
+    class Config:
+        extra = 'ignore'
+    personID: int
+    trialID: Optional[int] = None
+    calendarID: Optional[int] = None
+    structureID: Optional[int] = None
+    courseID: Optional[int] = None
+    courseName: Optional[str] = None
+    sectionID: Optional[int] = None
+    taskID: Optional[int] = None
+    termID: Optional[int] = None
+    taskName: Optional[str] = None
+    score: Optional[str] = None
+    progressScore: Optional[str] = None
+    progressPercent: Optional[float] = None
+    scoreID: Optional[int] = None
+    gradedOnce: Optional[bool] = None
+    hasAssignments: Optional[bool] = None
+
+
+class GradeCourseResponse(BaseModel):
+    """Grade Course Response Definition."""
+    class Config:
+        extra = 'ignore'
+    id: Optional[str] = Field(default=None, alias='_id')
+    rosterID: Optional[int] = None
+    personID: Optional[int] = None
+    courseID: Optional[int] = None
+    sectionID: Optional[int] = None
+    courseName: Optional[str] = None
+    courseNumber: Optional[str] = None
+    teacherDisplay: Optional[str] = None
+    gradingTasks: Optional[list[GradingTaskResponse]] = None
+
+
+class GradeTermResponse(BaseModel):
+    """Grade Term Response Definition."""
+    class Config:
+        extra = 'ignore'
+    calendarID: Optional[int] = None
+    termID: Optional[int] = None
+    termName: Optional[str] = None
+    termScheduleID: Optional[int] = None
+    termScheduleName: Optional[str] = None
+    termSeq: Optional[int] = None
+    isPrimary: Optional[bool] = None
+    startDate: Optional[str] = None
+    endDate: Optional[str] = None
+    courses: Optional[list[GradeCourseResponse]] = None
+
+
+class GradeResponse(BaseModel):
+    """Grade Response Definition (enrollment level)."""
+    class Config:
+        extra = 'ignore'
+    enrollmentID: Optional[int] = None
+    terms: Optional[list[GradeTermResponse]] = None
+
+
+class AttendanceCourseResponse(BaseModel):
+    """Attendance Course Response Definition."""
+    class Config:
+        extra = 'ignore'
+    courseID: Optional[int] = None
+    courseName: Optional[str] = None
+    sectionID: Optional[int] = None
+    totalAbsent: Optional[float] = None
+    totalTardy: Optional[float] = None
+    totalExcused: Optional[float] = None
+    totalUnexcused: Optional[float] = None
+
+
+class AttendanceTermResponse(BaseModel):
+    """Attendance Term Response Definition."""
+    class Config:
+        extra = 'ignore'
+    termID: Optional[int] = None
+    termName: Optional[str] = None
+    courses: Optional[list[AttendanceCourseResponse]] = None
+
+
+class AttendanceResponse(BaseModel):
+    """Attendance Response Definition."""
+    class Config:
+        extra = 'ignore'
+    terms: Optional[list[AttendanceTermResponse]] = None
+
+
+class MessageResponse(BaseModel):
+    """Message Response Definition."""
+    class Config:
+        extra = 'ignore'
+    messageID: Optional[int] = None
+    contextID: Optional[int] = None
+    actionRequired: Optional[bool] = None
+    postedTimestamp: Optional[str] = None
+    date: Optional[str] = None
+    name: Optional[str] = None
+    dueDate: Optional[str] = None
+    newMessage: Optional[bool] = None
+    personID: Optional[int] = None
+    process: Optional[str] = None
+    url: Optional[str] = None
+    sectionID: Optional[int] = None
+    schoolID: Optional[int] = None
+    calendarID: Optional[int] = None
+    sender: Optional[str] = None
+    studentID: Optional[int] = None
+    studentName: Optional[str] = None
+    courseID: Optional[int] = None
+    courseName: Optional[str] = None
+    messageType: Optional[str] = None
+
+
+class MessageDetailResponse(BaseModel):
+    """Message Detail Response Definition."""
+    class Config:
+        extra = 'ignore'
+    messageID: Optional[str] = None
+    createdTimeStamp: Optional[str] = None
+    deliveryTimeStamp: Optional[str] = None
+    senderID: Optional[str] = None
+    subject: Optional[str] = None
+    body: Optional[str] = None
