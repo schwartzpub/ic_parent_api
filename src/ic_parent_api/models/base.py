@@ -47,7 +47,7 @@ class StudentResponse(BaseModel):
     guardian: bool
     firstName: str
     lastName: str
-    middleName: str
+    middleName: Optional[str] = None
     suffix: Optional[str] = None
     alias: Optional[str] = None
     studentNumber: int
